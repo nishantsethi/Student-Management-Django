@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+{% block content %}
+<div class = "row>">
+    {% if latest %}
+        <h2>
+            Fees Details for <b>{{ latest.child.name}}</b>
+        </h2>
+        <a href="{% url 'site-home' %}"> Go Back</a>
+        <hr>
+        <ul>
+            <li> Last fees Paid for month: {{ latest.month}}</li>
+            <li> Last Fees Amount: {{latest.amount}}</li>
+            <li> Paid On: {{latest.date}}</li>
+        </ul>
+    {% else %}
+        <h2>
+            No Fees found
+        </h2>
+        <a href="{% url 'site-home' %}"> Go Back</a>
+    {% endif %}
+    
+</div>
+<div class ="row">
+    <div class="col-md-12">
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'admin:base_fees_add' %}">Add New Fees</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Child Name</th>
+                    <th>For Month</th>
+                    <th>Amount</th>
+                    <th>Fees Paid On</th>
+                    <th> Payment Method</th>
+                    <th>Notes</th>
+                </tr>
+                {% for fee in fees %}
+                    <tr>
+                        <td>{{fee.child.name}}</td>
+                        <td>{{fee.month}}</td>
+                        <td>{{fee.amount}}</td>
+                        <td>{{fee.date}}</td>
+                        <td> {{fee.payment_method}}</td>
+                        <td> {{fee.Notes}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

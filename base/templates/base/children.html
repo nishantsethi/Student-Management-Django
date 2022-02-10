@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+{% block content %}
+        <div class ="row">
+            <div class="col-md-12">
+                <h5>All Children</h5>
+                <a href="{% url 'site-home' %}"> Go Back</a>
+                <hr>
+                <div class="card card-body">
+                    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'admin:base_child_add' %}">New Admission</a>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Name</th>
+                            <th>Parent</th>
+                            <th>Class</th>
+                            <th>Fees</th>
+                        </tr>
+                        {% for child in children %}
+                            <tr>
+                                <td>{{child.name}}</td>
+                                <td>{{child.parent.name}}</td>
+                                <td> {% for course in child.course.all %}
+                                        {{course.name}}
+                                    {% endfor %}
+                                
+                                </td>
+                                <td><a class="btn btn-sm btn-warning" href="{% url 'child-fees' child.id %}">Know More</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

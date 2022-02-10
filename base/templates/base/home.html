@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="row">
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-white  mb-3" id="total-orders">
+              <div class="card-body">
+                <a href="{% url 'admin:base_child_add' %}" ><img src="{% static 'base/ADMISSION.png' %}" class="responsive"></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-white  mb-3" id="orders-delivered">
+            <div class="card-body">
+              <a href= "{% url 'all-children' %}"><img src="{% static 'base/STUDENTS.png' %}" class="responsive"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+    
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-white  mb-3" id="orders-pending">
+            <div class="card-body">
+              <a href= "{% url 'all-fees' %}"><img src="{% static 'base/FEES.png' %}" class="responsive"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-white  mb-3" id="orders-pending">
+            <div class="card-body">
+              <a href="{% url 'admin:index' %}"> <img src="{% static 'base/SETTINGS.png' %}" class="responsive"> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

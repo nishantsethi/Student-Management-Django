@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<div class = "row>">
+    <a href="{% url 'site-home' %}"> Go Back</a>
+    <hr>
+    <div class="row">
+        <div class="col">
+          <div class="col-md">
+            <div class="card text-center text-white  mb-3" id="total-orders">
+                <div class="card-body">
+                  <a href="{% url 'admin:base_fees_add' %}" ><img src="{% static 'base/NEW.png' %}" class="responsive"></a>
+                </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col">
+          <div class="col-md">
+            <div class="card text-center text-white  mb-3" id="orders-delivered">
+              <div class="card-body">
+                <a href= "{% url 'pending-fees' %}"><img src="{% static 'base/PENDING.png' %}" class="responsive"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class ="row">
+    <h2>
+        All Fees Records
+    </h2>
+    <hr>
+    <div class="col-md-12">
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Child Name</th>
+                    <th>For Month</th>
+                    <th>Amount</th>
+                    <th>Fees Paid On</th>
+                    <th> Payment Method</th>
+                    <th>Notes</th>
+                </tr>
+                {% for fee in fees %}
+                    <tr>
+                        <td>{{fee.child.name}}</td>
+                        <td>{{fee.month}}</td>
+                        <td>{{fee.amount}}</td>
+                        <td>{{fee.date}}</td>
+                        <td> {{fee.payment_method}}</td>
+                        <td> {{fee.Notes}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
