@@ -165,7 +165,7 @@ _Once you have python installed on your system, go to a suitable path in your ma
 
 	```sh
 
-	.env\Scripts\activate
+	.\env\Scripts\activate
 
 	```
 	Mac/Linux:
